@@ -34,9 +34,10 @@ int main()
 	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
 
 	std::cout << "Hochschule Augsburg";
+	*/
 
 	//testSpielsteine();
-	*/
+	/*
 	Console::init();
 	Position position(10, 10);
 	
@@ -47,5 +48,26 @@ int main()
 	
 	test.zeichne();
 	Cursor::bewegen(0, 0);
+	*/
+
+	int offsetX = CONFIGURATION::SPIELFELD_OFFSET_X;
+	int offsetY = CONFIGURATION::SPIELFELD_OFFSET_Y;
+	int lengthX = offsetX + (CONFIGURATION::SPIELFELD_DIMENSION_X * 2);
+	int lengthY = offsetY + CONFIGURATION::SPIELFELD_DIMENSION_Y;
+
+	Cursor::setze_Farbe(HINTERGRUND_WEISS);
+	for (int x = offsetX; x < lengthX; x++)
+	{
+		for (int y = offsetY; y < lengthY; y++)
+		{
+			if (x == offsetX || x == lengthX || y == offsetY || y == lengthY)
+			{
+				Console::zeichne_punkt(x, y, CONFIGURATION::SPIELFELD_BEGRENZUNG);
+			}
+		}
+	}
+
+	Cursor::bewegen(13, 7);
+	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
 
 }
