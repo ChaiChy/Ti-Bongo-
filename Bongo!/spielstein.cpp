@@ -366,22 +366,6 @@ void Spielstein::init() {
 }
 void Spielstein::zeichne()
 {
-	/*
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			for (auto k : felder[i][j])
-			{
-				Cursor::setze_Farbe(farbe);
-				Cursor::bewegen(k.getX(), k.getY());
-				Console::zeichne_punkt(k.getX(), k.getY(), ' ');
-			}
-		}
-	}
-	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
-	*/
-	
 	Cursor::setze_Farbe(farbe);
 	for (auto k : *getPositionen())
 	{

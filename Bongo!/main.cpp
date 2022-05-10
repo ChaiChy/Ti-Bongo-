@@ -37,6 +37,7 @@ int main()
 
 	//testSpielsteine();
 	*/
+	Console::init();
 	Position position(10, 10);
 	
 	Spielstein test(SPIELSTEIN_Z3);
@@ -45,7 +46,6 @@ int main()
 	test.rotation_links();
 	
 	test.zeichne();
-	
+	Cursor::bewegen(0, 0);
 
-	return 0;
 }

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="aufgabe.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="cursor.cpp" />
     <ClCompile Include="main.cpp" />
