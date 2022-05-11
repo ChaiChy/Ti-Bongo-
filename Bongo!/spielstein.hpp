@@ -40,6 +40,8 @@ public:
 	Position position;
 
 	void setPosition(Position position);
+	void setX(int x);
+	void setY(int y);
 	Position getPosition();
 
 	void init();

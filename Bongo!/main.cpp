@@ -52,6 +52,8 @@ int main()
 	test.zeichne();
 	Cursor::bewegen(0, 0);
 	*/
+
+	/*
 	int offsetX = CONFIGURATION::SPIELFELD_OFFSET_X;
 	int offsetY = CONFIGURATION::SPIELFELD_OFFSET_Y;
 	int lengthX = offsetX + (CONFIGURATION::SPIELFELD_DIMENSION_X * 2);
@@ -115,6 +117,33 @@ int main()
 	std::cout << "|    ___||       ||     |_ |    ___|        |   |  |    ___|  |   |  |    __  ||   | |_____  |" << std::endl;
 	std::cout << "|   |    |   _   ||    _  ||   |___         |   |  |   |___   |   |  |   |  | ||   |  _____| |" << std::endl;
 	std::cout << "|___|    |__| |__||___| |_||_______|        |___|  |_______|  |___|  |___|  |_||___| |_______|" << std::endl;
+	*/
+
+	Spielstein* s1 = new Spielstein(SPIELSTEIN_T);
+	Spielstein* s2 = new Spielstein(SPIELSTEIN_L3);
+	Spielstein* s3 = new Spielstein(SPIELSTEIN_L4);
+	//Spielstein* ls = new Spielstein(SPIELSTEIN_T);
+
+	Spielstein* ls = new Spielstein(SPIELSTEIN_LOESUNG);
+
+	s1->setX(CONFIGURATION::SPIELFELD_STEIN1_X);
+	s1->setY(CONFIGURATION::SPIELFELD_STEIN1_Y);
+
+	s2->setX(CONFIGURATION::SPIELFELD_STEIN2_X);
+	s2->setY(CONFIGURATION::SPIELFELD_STEIN2_Y);
+
+	s3->setX(CONFIGURATION::SPIELFELD_STEIN3_X);
+	s3->setY(CONFIGURATION::SPIELFELD_STEIN3_Y);
+
+	ls->setX(CONFIGURATION::SPIELFELD_LOESUNG_X);
+	ls->setY(CONFIGURATION::SPIELFELD_LOESUNG_Y);
+
+	Aufgabe* TestAufgabe = new Aufgabe(s1, s2, s3, ls);
+	TestAufgabe->zeichne();
+
+	Spiel TestSpiel(TestAufgabe);
+
 
 	return 0;
+
 }

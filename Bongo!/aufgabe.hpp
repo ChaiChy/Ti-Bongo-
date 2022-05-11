@@ -1,8 +1,6 @@
 #ifndef AUFGABE
 #define AUFGABE
 
-
-#include "spiel.hpp"
 #include "spielstein.hpp"
 #include "position.hpp"
 

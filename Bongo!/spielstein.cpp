@@ -382,7 +382,7 @@ void Spielstein::zeichne()
 	Cursor::setze_Farbe(farbe);
 	for (auto k : *getPositionen())
 	{
-		Console::zeichne_punkt(position.getX() + k.getX() + 1,position.getY() + k.getY() + 1, '#');
+		Console::zeichne_punkt(position.getX() + k.getX() + 1,position.getY() + k.getY() + 1, ' ');
 	}
 	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
 }
@@ -391,7 +391,7 @@ void Spielstein::loesche()
 	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
 	for (auto k : felder[0][0])
 	{
-		Console::zeichne_punkt(position.getX() + k.getX() + 1, position.getY() + k.getY() + 1, '#');
+		Console::zeichne_punkt(position.getX() + k.getX() + 1, position.getY() + k.getY() + 1, ' ');
 	}
 }
 
@@ -514,6 +514,17 @@ Spielstein Spielstein::operator+ (Spielstein& rhs) //const removed
 	}
 	return summe; 
 } //overlapping issue needs to be solved
+
+void Spielstein::setX(int x) 
+{
+	position.setX(x);
+}
+
+void Spielstein::setY(int y)
+{
+	position.setX(y);
+}
+
 
 void Spielstein::setPosition(Position position) //no idea why we need this
 {
