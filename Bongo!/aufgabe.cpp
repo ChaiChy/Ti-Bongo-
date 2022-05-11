@@ -7,16 +7,16 @@ Spielstein* Aufgabe::getSpielstein(size_t index)
 
 bool Aufgabe::geloest() //?
 {
-	for (int i = 0; i < steine.size(); i++)
-	{
-		return false;
-	}
 	/*
-	if (steine[i]->getPositionen()->at(i) == loesung_ptr->getPositionen()->at(i))
+	for (auto i : loesung_ptr->getPositionen())
 	{
-		return true;
+		if (!(i->innerhalb(loesung_ptr->getPositionen().)))
+		{
+			return false;
+		}
 	}
 	*/
+	return true;
 }
 
 void Aufgabe::zeichne() //first draw the "Lösungstein", then the rest of the Spielsteine.
@@ -35,6 +35,13 @@ void Aufgabe::loesche()
 	{
 		getSpielstein(i)->loesche();
 	}
+}
+
+Aufgabe::Aufgabe() {}; //default empty constructor
+
+Aufgabe::Aufgabe(Spielstein* stein1_ptr, Spielstein* stein2_ptr, Spielstein* stein3_ptr, Spielstein* loesung_ptr)
+{
+
 }
 
 

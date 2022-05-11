@@ -19,6 +19,7 @@ public:
 	void zeichne();
 	void loesche();
 
+	Aufgabe();
 	Aufgabe(Spielstein* stein1_ptr, Spielstein* stein2_ptr, Spielstein* stein3_ptr, Spielstein* loesung_ptr);
 };
 
