@@ -3,13 +3,15 @@
 
 #include "spielstein.hpp"
 #include "aufgabe.hpp"
+#include "simpleInput.hpp"
 
 class Spiel
 {
 private:
-	//Aufgabe aktuelleAufgabe;
+	Aufgabe aktuelleAufgabe;
 public:
 	friend void testSpiel();
+	int selectedStein = 0;
 	void init();
 	void ausgabeLogo();
 	void ausgabeRahmen();
@@ -20,6 +22,7 @@ public:
 	bool eingabeErlaubt(char input);
 	void draw();
 
+	Spiel(Aufgabe* aufgabe);
 };
 
 #endif

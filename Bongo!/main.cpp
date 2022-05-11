@@ -3,7 +3,10 @@
 #include "configuration.hpp"
 #include "aufgabe.hpp"
 #include "spiel.hpp"
-
+#include "simpleInput.hpp"
+#include "position.hpp"
+#include "cursor.hpp"
+#include "console.hpp"
 
 
 

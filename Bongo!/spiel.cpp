@@ -51,13 +51,25 @@ void Spiel::ausgabeRahmen() //framework
 
 void Spiel::ausgabeLegende() //incomplete
 {
-	int offsetX = CONFIGURATION::SPIELFELD_OFFSET_X;
-	int offsetY = CONFIGURATION::SPIELFELD_OFFSET_Y;
-	int lengthX = offsetX + (CONFIGURATION::SPIELFELD_DIMENSION_X * 2);
-	int lengthY = offsetY + CONFIGURATION::SPIELFELD_DIMENSION_Y;
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	aktuelleAufgabe.steine[0]->zeichne();
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 6);
+	std::cout << "1";
 
-	Cursor::bewegen(offsetX, lengthY);
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 5, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	aktuelleAufgabe.steine[1]->zeichne();
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 5, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 6);
+	std::cout << "2";
 
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 10, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	aktuelleAufgabe.steine[1]->zeichne();
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 10, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 6);
+	std::cout << "2";
+
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 15, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	aktuelleAufgabe.steine[2]->zeichne();
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 15, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 6);
+	std::cout << "3";
 }
 
 void Spiel::ausgabeSteuerung()
@@ -101,14 +113,76 @@ void Spiel::ausgabeSteuerung()
 	std::cout << " 1, 2, 3, 4 - STEINAUSWAHL";
 }
 
-void Spiel::spielSchleife()
+void Spiel::spielSchleife() //loop
 {
-
+	while (true)
+	{
+		spielzug();
+		if (aktuelleAufgabe.geloest())
+		{
+			return;
+		}
+	}
 }
 
-void Spiel::spielzug()
+void Spiel::spielzug() //input
 {
+	char input = SimpleInput::getSteuerung(CONFIGURATION::INTERVALL);
+	if (input == CONFIGURATION::EINGABE_UNGUELTIG) //terminates function if input is invalid.
+	{
+		return;
+	}
+	aktuelleAufgabe.loesche();
+	//W,A,S,D
+	if (input == CONFIGURATION::SPIELSTEIN_BEWEGEN_HOCH)
+	{
+		aktuelleAufgabe.steine[selectedStein]->bewegen(CONFIGURATION::SPIELSTEIN_BEWEGEN_HOCH);
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_BEWEGEN_RUNTER)
+	{
+		aktuelleAufgabe.steine[selectedStein]->bewegen(CONFIGURATION::SPIELSTEIN_BEWEGEN_RUNTER);
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_BEWEGEN_LINKS)
+	{
+		aktuelleAufgabe.steine[selectedStein]->bewegen(CONFIGURATION::SPIELSTEIN_BEWEGEN_LINKS);
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_BEWEGEN_RECHTS)
+	{
+		aktuelleAufgabe.steine[selectedStein]->bewegen(CONFIGURATION::SPIELSTEIN_BEWEGEN_RECHTS);
+	}
+	//flip
+	else if (input == CONFIGURATION::SPIELSTEIN_FLIP)
+	{
+		aktuelleAufgabe.steine[selectedStein]->flip();
+	}
+	//rotation
+	else if (input == CONFIGURATION::SPIELSTEIN_ROTIEREN_LINKS)
+	{
+		aktuelleAufgabe.steine[selectedStein]->rotation_links();
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_ROTIEREN_RECHTS)
+	{
+		aktuelleAufgabe.steine[selectedStein]->rotation_rechts();
+	}
+	//stein selection
+	else if (input == CONFIGURATION::SPIELSTEIN_1_INDEX)
+	{
+		selectedStein = 0;
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_2_INDEX)
+	{
+		selectedStein = 1;
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_3_INDEX)
+	{
+		selectedStein = 2;
+	}
+	else if (input == CONFIGURATION::SPIELSTEIN_4_INDEX)
+	{
+		selectedStein = 3;
+	}
 
+	aktuelleAufgabe.zeichne();
 }
 
 bool Spiel::eingabeErlaubt(char input) //optional
@@ -116,9 +190,16 @@ bool Spiel::eingabeErlaubt(char input) //optional
 	return false;
 }
 
-void Spiel::draw()
+void Spiel::draw() //?
 {
 
+}
+
+Spiel::Spiel(Aufgabe* aufgabe)
+{
+	aktuelleAufgabe = *aufgabe;
+	init();
+	spielSchleife();
 }
 
 

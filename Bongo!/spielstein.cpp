@@ -358,6 +358,19 @@ void Spielstein::init() {
 		{
 			name = "LOESUNG";
 			farbe = HINTERGRUND_HELL_WEISS;
+			felder[0][0].push_back(Position(1, 0)); //_###
+			felder[0][0].push_back(Position(2, 0));	//_###
+			felder[0][0].push_back(Position(3, 0)); //_###
+			felder[0][0].push_back(Position(1, 1)); //_###
+			felder[0][0].push_back(Position(2, 1));
+			felder[0][0].push_back(Position(3, 1));
+			felder[0][0].push_back(Position(1, 2));
+			felder[0][0].push_back(Position(2, 2));
+			felder[0][0].push_back(Position(3, 2));
+			felder[0][0].push_back(Position(1, 3));
+			felder[0][0].push_back(Position(2, 3));
+			felder[0][0].push_back(Position(3, 3));
+
 			break;
 		}
 		default:

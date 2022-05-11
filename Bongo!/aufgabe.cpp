@@ -5,17 +5,19 @@ Spielstein* Aufgabe::getSpielstein(size_t index)
 	return steine[index];
 }
 
-bool Aufgabe::geloest() //?
+bool Aufgabe::geloest() 
 {
-	/*
-	for (auto i : loesung_ptr->getPositionen())
+	
+	for (int i = 0; i < loesung_ptr->felder[0][0].size(); i++)
 	{
-		if (!(i->innerhalb(loesung_ptr->getPositionen().)))
+		for (int j = 0; j < steine.size(); j++)
 		{
-			return false;
+			if (!steine[j]->innerhalb(loesung_ptr->getPosition() + loesung_ptr->felder[0][0].at(i)))
+			{
+				return false;
+			}
 		}
 	}
-	*/
 	return true;
 }
 
@@ -41,7 +43,10 @@ Aufgabe::Aufgabe() {}; //default empty constructor
 
 Aufgabe::Aufgabe(Spielstein* stein1_ptr, Spielstein* stein2_ptr, Spielstein* stein3_ptr, Spielstein* loesung_ptr)
 {
-
+	steine.push_back(stein1_ptr);
+	steine.push_back(stein2_ptr);
+	steine.push_back(stein3_ptr);
+	this->loesung_ptr = loesung_ptr;	
 }
 
 

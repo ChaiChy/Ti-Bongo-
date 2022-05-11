@@ -12,7 +12,7 @@ private:
 	std::vector<Spielstein*> steine;
 public:
 	friend class Spiel;
-	Spielstein* loesung_ptr;
+	Spielstein* loesung_ptr = NULL;
 
 	Spielstein* getSpielstein(size_t index);
 	bool geloest(); //solved
