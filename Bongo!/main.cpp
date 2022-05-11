@@ -119,29 +119,30 @@ int main()
 	std::cout << "|___|    |__| |__||___| |_||_______|        |___|  |_______|  |___|  |___|  |_||___| |_______|" << std::endl;
 	*/
 
-	Spielstein* s1 = new Spielstein(SPIELSTEIN_T);
-	Spielstein* s2 = new Spielstein(SPIELSTEIN_L3);
+	Spielstein* s1 = new Spielstein(SPIELSTEIN_I3);
+	Spielstein* s2 = new Spielstein(SPIELSTEIN_I4);
 	Spielstein* s3 = new Spielstein(SPIELSTEIN_L4);
-	//Spielstein* ls = new Spielstein(SPIELSTEIN_T);
 
 	Spielstein* ls = new Spielstein(SPIELSTEIN_LOESUNG);
 
+	
 	s1->setX(CONFIGURATION::SPIELFELD_STEIN1_X);
 	s1->setY(CONFIGURATION::SPIELFELD_STEIN1_Y);
 
-	s2->setX(CONFIGURATION::SPIELFELD_STEIN2_X);
-	s2->setY(CONFIGURATION::SPIELFELD_STEIN2_Y);
+	s2->setX(CONFIGURATION::SPIELFELD_STEIN2_X + 2);
+	s2->setY(CONFIGURATION::SPIELFELD_STEIN2_Y - 6);
 
 	s3->setX(CONFIGURATION::SPIELFELD_STEIN3_X);
 	s3->setY(CONFIGURATION::SPIELFELD_STEIN3_Y);
 
-	ls->setX(CONFIGURATION::SPIELFELD_LOESUNG_X);
-	ls->setY(CONFIGURATION::SPIELFELD_LOESUNG_Y);
+	ls->setX(CONFIGURATION::SPIELFELD_LOESUNG_X + 6);
+	ls->setY(CONFIGURATION::SPIELFELD_LOESUNG_Y - 3);
+	
 
-	Aufgabe* TestAufgabe = new Aufgabe(s1, s2, s3, ls);
-	TestAufgabe->zeichne();
+	Aufgabe* test = new Aufgabe(s1, s2, s3, ls);
+	test->zeichne();
 
-	Spiel TestSpiel(TestAufgabe);
+	Spiel TestSpiel(test);
 
 
 	return 0;

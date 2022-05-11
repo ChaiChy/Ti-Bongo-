@@ -405,6 +405,7 @@ void Spielstein::bewegen(int richtung)
 			if (position.getY() != 0)
 			{
 				position.setY(position.getY() - 1);
+				break;
 			}
 		}
 		case CONFIGURATION::SPIELSTEIN_BEWEGEN_RUNTER:
@@ -412,6 +413,7 @@ void Spielstein::bewegen(int richtung)
 			if (position.getY() != 0)
 			{
 				position.setY(position.getY() + 1);
+				break;
 			}
 		}
 		case CONFIGURATION::SPIELSTEIN_BEWEGEN_LINKS:
@@ -419,12 +421,14 @@ void Spielstein::bewegen(int richtung)
 			if (position.getX() != 0)
 			{
 				position.setX(position.getX() - 1);
+				break;
 			}
 		}
 		case CONFIGURATION::SPIELSTEIN_BEWEGEN_RECHTS:
 			if (position.getX() != 0)
 			{
 				position.setX(position.getX() + 1);
+				break;
 			}
 	}
 }
@@ -502,15 +506,13 @@ Spielstein Spielstein::operator+ (Spielstein& rhs) //const removed
 {
 	Spielstein summe(SPIELSTEIN_FREI);
 	
-	for (int i = 0; i < 2; i++)
+	for (auto i : *getPositionen())
 	{
-		for (int j = 0; j < 4; i++)
-		{
-			std::vector<Position> sumPositions = summe.felder[i][j];
-			sumPositions.reserve(getPositionen()->size() + rhs.getPositionen()->size());
-			sumPositions.insert(sumPositions.end(), getPositionen()->begin(), getPositionen()->end());
-			sumPositions.insert(sumPositions.end(), rhs.getPositionen()->begin(), rhs.getPositionen()->end());
-		}
+		summe.felder[0][0].push_back(i);
+	}
+	for (auto j : *rhs.getPositionen())
+	{
+		summe.felder[0][0].push_back(j);
 	}
 	return summe; 
 } //overlapping issue needs to be solved
@@ -522,7 +524,7 @@ void Spielstein::setX(int x)
 
 void Spielstein::setY(int y)
 {
-	position.setX(y);
+	position.setY(y);
 }
 
 

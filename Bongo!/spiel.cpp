@@ -7,11 +7,11 @@ void testSpiel()
 
 void Spiel::init()
 {
-	Console::verstecken();
-	ausgabeRahmen();
-	ausgabeLogo();
-	ausgabeSteuerung();
-	ausgabeLegende();
+	Console::verstecken(); 
+	ausgabeRahmen();		//generate frame
+	ausgabeLogo();			//generate logo
+	ausgabeSteuerung();		//generate instructions
+	//ausgabeLegende();		//generate signs
 }
 
 void Spiel::ausgabeLogo()
@@ -45,34 +45,34 @@ void Spiel::ausgabeRahmen() //framework
 		}
 	}
 		
-	Cursor::bewegen(13, 7);
+	//Cursor::bewegen(13, 7);
 	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
 }
 
 void Spiel::ausgabeLegende() //incomplete
 {
-	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	Console::verstecken();
+	aktuelleAufgabe.steine[0]->setX(CONFIGURATION::SPIELFELD_OFFSET_X + 2);
+	aktuelleAufgabe.steine[0]->setY(CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	aktuelleAufgabe.steine[0]->zeichne();
 	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	std::cout << "1";
 
-	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 5, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	aktuelleAufgabe.steine[1]->setX(CONFIGURATION::SPIELFELD_OFFSET_X + 5);
+	aktuelleAufgabe.steine[1]->setY(CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	aktuelleAufgabe.steine[1]->zeichne();
 	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 5, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	std::cout << "2";
 
-	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 10, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
-	aktuelleAufgabe.steine[1]->zeichne();
-	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 10, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
-	std::cout << "2";
-
-	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 15, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y + 2);
+	aktuelleAufgabe.steine[2]->setX(CONFIGURATION::SPIELFELD_OFFSET_X + 10);
+	aktuelleAufgabe.steine[2]->setY(CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	aktuelleAufgabe.steine[2]->zeichne();
-	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 15, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
+	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 10, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	std::cout << "3";
+
 }
 
-void Spiel::ausgabeSteuerung()
+void Spiel::ausgabeSteuerung() //control instruction
 {
 	int x_start = CONFIGURATION::SPIELFELD_DIMENSION_X * 4;
 	int x_length = x_start + 30;
