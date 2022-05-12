@@ -140,9 +140,10 @@ int main()
 	
 
 	Aufgabe* test = new Aufgabe(s1, s2, s3, ls);
-	test->zeichne();
-
+	
 	Spiel TestSpiel(test);
+
+	test->zeichne();
 
 
 	return 0;

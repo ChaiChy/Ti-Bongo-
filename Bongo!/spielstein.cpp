@@ -198,7 +198,7 @@ void Spielstein::init() {
 		case SPIELSTEIN_L4:
 		{
 			name = "L4";
-			farbe = HINTERGRUND_GELB;
+			farbe = HINTERGRUND_CYAN;
 			felder[0][0].push_back(Position(1, 0));//_#__
 			felder[0][0].push_back(Position(1, 1));//_#__
 			felder[0][0].push_back(Position(1, 2));//_#__
@@ -389,7 +389,7 @@ void Spielstein::zeichne()
 void Spielstein::loesche()
 {
 	Cursor::setze_Farbe(HINTERGRUND_SCHWARZ);
-	for (auto k : felder[0][0])
+	for (auto k : *getPositionen())
 	{
 		Console::zeichne_punkt(position.getX() + k.getX() + 1, position.getY() + k.getY() + 1, ' ');
 	}

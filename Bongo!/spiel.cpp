@@ -11,7 +11,7 @@ void Spiel::init()
 	ausgabeRahmen();		//generate frame
 	ausgabeLogo();			//generate logo
 	ausgabeSteuerung();		//generate instructions
-	//ausgabeLegende();		//generate signs
+	ausgabeLegende();		//generate signs
 }
 
 void Spiel::ausgabeLogo()
@@ -52,20 +52,20 @@ void Spiel::ausgabeRahmen() //framework
 void Spiel::ausgabeLegende() //incomplete
 {
 	Console::verstecken();
-	aktuelleAufgabe.steine[0]->setX(CONFIGURATION::SPIELFELD_OFFSET_X + 2);
-	aktuelleAufgabe.steine[0]->setY(CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
+	aktuelleAufgabe.steine[0]->setX(CONFIGURATION::SPIELFELD_OFFSET_X);
+	aktuelleAufgabe.steine[0]->setY(CONFIGURATION::SPIELFELD_DIMENSION_Y - 2);
 	aktuelleAufgabe.steine[0]->zeichne();
 	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	std::cout << "1";
 
 	aktuelleAufgabe.steine[1]->setX(CONFIGURATION::SPIELFELD_OFFSET_X + 5);
-	aktuelleAufgabe.steine[1]->setY(CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
+	aktuelleAufgabe.steine[1]->setY(CONFIGURATION::SPIELFELD_DIMENSION_Y - 2);
 	aktuelleAufgabe.steine[1]->zeichne();
 	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 5, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	std::cout << "2";
 
 	aktuelleAufgabe.steine[2]->setX(CONFIGURATION::SPIELFELD_OFFSET_X + 10);
-	aktuelleAufgabe.steine[2]->setY(CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
+	aktuelleAufgabe.steine[2]->setY(CONFIGURATION::SPIELFELD_DIMENSION_Y - 2);
 	aktuelleAufgabe.steine[2]->zeichne();
 	Cursor::bewegen(CONFIGURATION::SPIELFELD_OFFSET_X + 10, CONFIGURATION::SPIELFELD_OFFSET_Y + CONFIGURATION::SPIELFELD_DIMENSION_Y);
 	std::cout << "3";
@@ -199,6 +199,17 @@ Spiel::Spiel(Aufgabe* aufgabe)
 {
 	aktuelleAufgabe = *aufgabe;
 	init();
+	aktuelleAufgabe.steine[0]->setX(CONFIGURATION::SPIELFELD_STEIN1_X);
+	aktuelleAufgabe.steine[0]->setY(CONFIGURATION::SPIELFELD_STEIN1_Y);
+	aktuelleAufgabe.steine[0]->zeichne();
+
+	aktuelleAufgabe.steine[1]->setX(CONFIGURATION::SPIELFELD_STEIN2_X + 2);
+	aktuelleAufgabe.steine[1]->setY(CONFIGURATION::SPIELFELD_STEIN2_Y - 6);
+	aktuelleAufgabe.steine[1]->zeichne();
+
+	aktuelleAufgabe.steine[2]->setX(CONFIGURATION::SPIELFELD_STEIN2_X + 6);
+	aktuelleAufgabe.steine[2]->setY(CONFIGURATION::SPIELFELD_STEIN2_Y - 3);
+	aktuelleAufgabe.steine[2]->zeichne();
 	spielSchleife();
 }
 
