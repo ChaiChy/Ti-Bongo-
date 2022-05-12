@@ -210,6 +210,11 @@ Spiel::Spiel(Aufgabe* aufgabe)
 	aktuelleAufgabe.steine[2]->setX(CONFIGURATION::SPIELFELD_STEIN2_X + 6);
 	aktuelleAufgabe.steine[2]->setY(CONFIGURATION::SPIELFELD_STEIN2_Y - 3);
 	aktuelleAufgabe.steine[2]->zeichne();
+
+	aufgabe->loesung_ptr->setX(CONFIGURATION::SPIELFELD_LOESUNG_X + 6);
+	aufgabe->loesung_ptr->setY(CONFIGURATION::SPIELFELD_LOESUNG_Y - 3);
+	aufgabe->loesung_ptr->zeichne();
+
 	spielSchleife();
 }
 
